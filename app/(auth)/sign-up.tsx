@@ -5,23 +5,19 @@ import { Alert, Image, ScrollView, Text, View } from "react-native";
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
 import { icons, images } from "@/constants";
+import OAuth from "@/components/OAuth";
 
 
 const SignUp = () => {
 
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  
 
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const [verification, setVerification] = useState({
-    state: "default",
-    error: "",
-    code: "",
-  });
-
+  
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -36,6 +32,9 @@ const SignUp = () => {
           <InputField
             label="Name"
             placeholder="Enter name"
+            labelStyle="text-lg font-JakartaSemiBold mb-3"
+            iconStyle="w-6 h-6 ml-2"
+            containerStyle="mb-2 bg-neutral-100 border border-neutral-100 focus:border-primary-500 rounded-full"
             icon={icons.person}
             value={form.name}
             onChangeText={(value) => setForm({ ...form, name: value })}
@@ -44,6 +43,9 @@ const SignUp = () => {
             label="Email"
             placeholder="Enter email"
             icon={icons.email}
+            labelStyle="text-lg font-JakartaSemiBold mb-3"
+            iconStyle="w-6 h-6 ml-2"
+            containerStyle="mb-2 bg-neutral-100 border border-neutral-100 focus:border-primary-500 rounded-full"
             textContentType="emailAddress"
             value={form.email}
             onChangeText={(value) => setForm({ ...form, email: value })}
@@ -51,6 +53,9 @@ const SignUp = () => {
           <InputField
             label="Password"
             placeholder="Enter password"
+            labelStyle="text-lg font-JakartaSemiBold mb-3"
+            iconStyle="w-6 h-6 ml-2"
+            containerStyle="mb-2 bg-neutral-100 border border-neutral-100 focus:border-primary-500 rounded-full"
             icon={icons.lock}
             secureTextEntry={true}
             textContentType="password"
@@ -60,9 +65,9 @@ const SignUp = () => {
           <CustomButton
             title="Sign Up"
             onPress={() => {}}
-            className="mt-6"
+            className="mt-6 p-6 mb-4"
           />
-          
+          <OAuth/>
           <Link
             href="/sign-in"
             className="text-lg text-center text-general-200 mt-10"
@@ -71,54 +76,7 @@ const SignUp = () => {
             <Text className="text-primary-500">Log In</Text>
           </Link>
         </View>
-      
-          <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
-            <Text className="font-JakartaExtraBold text-2xl mb-2">
-              Verification
-            </Text>
-            <Text className="font-Jakarta mb-5">
-              We've sent a verification code to {form.email}.
-            </Text>
-            <InputField
-              label={"Code"}
-              icon={icons.lock}
-              placeholder={"12345"}
-              value={verification.code}
-              keyboardType="numeric"
-              onChangeText={(code) =>
-                setVerification({ ...verification, code })
-              }
-            />
-            {verification.error && (
-              <Text className="text-red-500 text-sm mt-1">
-                {verification.error}
-              </Text>
-            )}
-            <CustomButton
-              title="Verify Email"
-              onPress={() => {}}
-              className="mt-5 bg-success-500"
-            />
-          </View>
-        
-        
-          <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
-            <Image
-              source={images.check}
-              className="w-[110px] h-[110px] mx-auto my-5"
-            />
-            <Text className="text-3xl font-JakartaBold text-center">
-              Verified
-            </Text>
-            <Text className="text-base text-gray-400 font-Jakarta text-center mt-2">
-              You have successfully verified your account.
-            </Text>
-            <CustomButton
-              title="Browse Home"
-              onPress={() => router.push(`/(root)/(tabs)/home`)}
-              className="mt-5"
-            />
-          </View>
+  
         
       </View>
     </ScrollView>
