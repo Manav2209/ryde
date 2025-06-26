@@ -5,6 +5,10 @@ import "./globals.css";
 import 'react-native-reanimated';
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import { ClerkProvider } from '@clerk/clerk-expo'
+import { Slot } from 'expo-router'
+import { tokenCache } from '@clerk/clerk-expo/token-cache'
+
 
 
 SplashScreen.preventAutoHideAsync(); // prevent auto hide
@@ -39,7 +43,7 @@ export default function RootLayout() {
   }
 
   return (
-    
+    <ClerkProvider tokenCache={tokenCache}>
       <Stack screenOptions={
         {
           headerShown :false
@@ -48,6 +52,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" options={{headerShown : false}}/>
       </Stack>
+      </ClerkProvider>
       
     
   );

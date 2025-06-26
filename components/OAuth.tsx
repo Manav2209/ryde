@@ -12,14 +12,14 @@ const OAuth = () => {
     return(
         <View >
             <View className="flex flex-row justify-center items-center">
-                <View className="flex h-[1px] bg-general-200" />
+                <View className="flex h-[2px] bg-slate-600" />
                 <Text className="text-lg">OR</Text>
-                <View className="flex h-[1px] bg-general-200" />
+                <View className="flex h-[2px] bg-slate-600" />
 
             </View>
 
             <CustomButton
-            title ="Log In with Google"
+            title ="  Log In with Google"
             className="mt-5 w-full shadow-none"
             iconStyle="w-5 h-5 px-4" // Adjust icon size to match text size
 
@@ -27,7 +27,7 @@ const OAuth = () => {
                 <Image
                 source={icons.google}
                 resizeMode="contain"
-                className="w-5 h-5 mr-2 pr-4" 
+                className="w-5 h-5 mx-2 pr-4" 
                 />
             )}
             bgVariant="outline"
